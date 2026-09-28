@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Business Insights Agent</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 60px auto; }
+        input { width: 70%; padding: 10px; }
+        button { padding: 10px 20px; }
+        #odgovor { margin-top: 20px; padding: 15px; background: #f0f0f0; border-radius: 8px; min-height: 40px; }
+    </style>
+</head>
+<body>
+    <h2>Postavi pitanje o prodaji</h2>
+    <input type="text" id="pitanje" placeholder="npr. Koliko smo prodali u martu?">
+    <button onclick="posaljiPitanje()">Pitaj</button>
+    <div id="odgovor"></div>
+
+    <script>
+        async function posaljiPitanje() {
+            const pitanje = document.getElementById("pitanje").value;
+            document.getElementById("odgovor").innerText = "Razmišljam...";
+            const res = await fetch("/pitaj", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ pitanje: pitanje })
+            });
+            const data = await res.json();
+            document.getElementById("odgovor").innerText = data.odgovor || data.greska;
+        }
+    </script>
+</body>
+</html>
