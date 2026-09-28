@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <title>Prijava</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 400px; margin: 100px auto; }
+        input { width: 100%; padding: 10px; margin-bottom: 10px; box-sizing: border-box; }
+        button { padding: 10px 20px; }
+        .greska { color: #b00020; }
+    </style>
+</head>
+<body>
+    <h2>AI Business Insights Agent</h2>
+    <p>Unesi pristupnu šifru.</p>
+    <form method="post">
+        <input type="password" name="sifra" placeholder="Šifra" autofocus>
+        <button type="submit">Uđi</button>
+    </form>
+    {% if greska %}<p class="greska">{{ greska }}</p>{% endif %}
+</body>
+</html>

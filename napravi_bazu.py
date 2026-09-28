@@ -1,6 +1,7 @@
 import sqlite3
 import random
 from datetime import date, timedelta
+random.seed(42)
 
 conn = sqlite3.connect("prodaja.db")
 cursor = conn.cursor()
